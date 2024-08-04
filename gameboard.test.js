@@ -13,14 +13,14 @@ test("place ship", () => {
     board.placeShip(3, 3, "vertical", 3);
     board.placeShip(0, 0, "horizontal", 3);
 
-    expect(board.board[3][3]).not.toBeNull()
-    expect(board.board[3][4]).not.toBeNull()
-    expect(board.board[3][5]).not.toBeNull()
-    expect(board.board[0][0]).not.toBeNull()
-    expect(board.board[1][0]).not.toBeNull()
-    expect(board.board[2][0]).not.toBeNull()
-    expect(board.board[3][6]).toBeNull()
-    expect(board.board[3][2]).toBeNull()
+    expect(board.board[3][3].ship).not.toBeNull()
+    expect(board.board[3][4].ship).not.toBeNull()
+    expect(board.board[3][5].ship).not.toBeNull()
+    expect(board.board[0][0].ship).not.toBeNull()
+    expect(board.board[1][0].ship).not.toBeNull()
+    expect(board.board[2][0].ship).not.toBeNull()
+    expect(board.board[3][6].ship).toBeNull()
+    expect(board.board[3][2].ship).toBeNull()
 })
 
 test("incorrect ship placement", () => {
@@ -35,9 +35,9 @@ test("receive hit", () => {
     const board = new GameBoard();
     board.placeShip(3, 3, "vertical", 3);
     board.receiveHit(3,3);
-    expect(board.board[3][3].hits).toBe(1);
-    expect(board.attackB[3][3]).toEqual("hit");
-    expect(board.attackB[1][3]).toBeNull();
+    expect(board.board[3][3].ship.hits).toBe(1);
+    expect(board.board[3][3].hit).toEqual("hit");
+    expect(board.board[1][3].hit).toBeNull();
 })
 
 test("check allSunk", () => {
